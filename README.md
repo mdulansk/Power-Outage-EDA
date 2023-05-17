@@ -465,4 +465,135 @@ The head of grouped_state and grouped_state_no_outliers is below (they have the 
 ## Univariate Analysis
 
 The following plots show how the Gross State Product (GSP) is distributed for each large power outage. It can be seen that the large majority of power outages occurred in states with GSP of less than 100k, but there are power outages with GSP of over 150k. All of these power outages are in Washington DC, where the GSP is significantly higher than any state. Washington DC was excluded as an outlier in most future calculations. 
-<iframe src="assets/Univarite_plot.html" width=600 height=600 frameBorder=0></iframe>
+
+<iframe src="assets/Univarite_plot.html" width=620 height=600 frameBorder=0></iframe>
+
+## Bivariate Analysis
+
+This plot is a visualization of OUTAGES.POP.NORM, which is a column from grouped_state_no_outliers. It contains an observation for each state on how many power outages there were per 100,000 people. It should be noted that outliers (DE and DC) were removed to allow better visualization and analysis. 
+<iframe src="assets/Bivariate_plot.html" width=620 height=600 frameBorder=0></iframe>
+
+## Interesting Aggregates
+
+The following pivot table is used to compare the average power outage duration in each region of the US with the cause of the given power outage. This can be used to infer how well resources are able to recover the power grid, or how severly the power grid was damaged by a given storm. It was created by finding the mean value of power outage durate for each region by each power outage cause. 
+
+<div style ="width: 480 px; overflow-x: auto;">
+    <table class="dataframe">
+        <thead>
+            <tr style="text-align: right;">
+            <th>CAUSE.CATEGORY</th>
+            <th>equipment failure</th>
+            <th>fuel supply emergency</th>
+            <th>intentional attack</th>
+            <th>islanding</th>
+            <th>public appeal</th>
+            <th>severe weather</th>
+            <th>system operability disruption</th>
+            </tr>
+            <tr>
+            <th>CLIMATE.REGION</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <th>Central</th>
+            <td>5.366667</td>
+            <td>167.254167</td>
+            <td>5.767647</td>
+            <td>2.088889</td>
+            <td>23.500000</td>
+            <td>54.166792</td>
+            <td>44.920000</td>
+            </tr>
+            <tr>
+            <th>East North Central</th>
+            <td>440.588889</td>
+            <td>566.187500</td>
+            <td>39.600833</td>
+            <td>0.016667</td>
+            <td>12.216667</td>
+            <td>73.913622</td>
+            <td>43.500000</td>
+            </tr>
+            <tr>
+            <th>Northeast</th>
+            <td>3.596667</td>
+            <td>243.826190</td>
+            <td>3.266412</td>
+            <td>14.683333</td>
+            <td>44.250000</td>
+            <td>73.831714</td>
+            <td>12.891667</td>
+            </tr>
+            <tr>
+            <th>Northwest</th>
+            <td>11.700000</td>
+            <td>0.016667</td>
+            <td>6.230196</td>
+            <td>1.222222</td>
+            <td>14.966667</td>
+            <td>80.633333</td>
+            <td>2.350000</td>
+            </tr>
+            <tr>
+            <th>South</th>
+            <td>4.929630</td>
+            <td>291.375000</td>
+            <td>5.426786</td>
+            <td>8.225000</td>
+            <td>19.399603</td>
+            <td>73.189151</td>
+            <td>14.434568</td>
+            </tr>
+            <tr>
+            <th>Southeast</th>
+            <td>9.241667</td>
+            <td>0.000000</td>
+            <td>8.411111</td>
+            <td>0.000000</td>
+            <td>47.756667</td>
+            <td>44.376006</td>
+            <td>2.821875</td>
+            </tr>
+            <tr>
+            <th>Southwest</th>
+            <td>1.896667</td>
+            <td>1.266667</td>
+            <td>4.427869</td>
+            <td>0.033333</td>
+            <td>37.916667</td>
+            <td>192.881667</td>
+            <td>5.487037</td>
+            </tr>
+            <tr>
+            <th>West</th>
+            <td>8.746825</td>
+            <td>102.576667</td>
+            <td>14.294624</td>
+            <td>3.580952</td>
+            <td>33.801852</td>
+            <td>48.806219</td>
+            <td>6.061111</td>
+            </tr>
+            <tr>
+            <th>West North Central</th>
+            <td>1.016667</td>
+            <td>0.000000</td>
+            <td>0.391667</td>
+            <td>1.136667</td>
+            <td>7.325000</td>
+            <td>40.708333</td>
+            <td>0.000000</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+Specifically in this pivot table it can be seen that the East North Central Region had by far the longest periods without power compared to the other regions. This is mainly from power outages caused by equipment failure and fuel supply emergencies. These same causes played much less of a role in the length of power outages for most other regions. It can be seen that the southwest region had the longest average power outage duration for sever weather storms. This could likely be due to fires and wind destroying power plants. 
