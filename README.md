@@ -465,4 +465,4 @@ The head of grouped_state and grouped_state_no_outliers is below (they have the 
 ## Univariate Analysis
 
 The following plots show how the Gross State Product (GSP) is distributed for each large power outage. It can be seen that the large majority of power outages occurred in states with GSP of less than 100k, but there are power outages with GSP of over 150k. All of these power outages are in Washington DC, where the GSP is significantly higher than any state. Washington DC was excluded as an outlier in most future calculations. 
-<iframe src="assets/Univarite_plot.html" width=600 height=480 frameBorder=0></iframe>
+<iframe src="assets/Univarite_plot.html" width=600 height=600 frameBorder=0></iframe>
