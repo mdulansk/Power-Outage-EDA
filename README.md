@@ -399,7 +399,7 @@ The OUTAGE.DURATION column was divided by sixty in order to make it in minutes, 
 
 The second dataframe was grouped_state_no_outliers, which was identical to grouped_state but without Delaware and Washington DC. These two states were taken out particularly because when visualized, they are clear outliers. Delaware was an outlier for the number of power outages that occurred, and Washington DC was an outlier for the GSP as shown in the plot below.
 
-<iframe src="assets/outliers_plot.html" width=620 height=600 frameBorder=0></iframe>
+<iframe src="assets/outliers_plot.html" width=620 height=400 frameBorder=0></iframe>
 
 The head of grouped_state and grouped_state_no_outliers is below (they have the same head):
 
