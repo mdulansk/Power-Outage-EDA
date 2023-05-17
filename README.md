@@ -1,6 +1,6 @@
 # Introduction
 
-The data in this website come from a dataset created by the Laboratory for Advancing Sustainable Critical Infrastructure at Purdue Univeristy (https://www.sciencedirect.com/science/article/pii/S2352340918307182). This dataset has a row for each power outage from Jan 2000- July 2016 in the United States that impacted atleast 50,000 customers or caused an unplanned firm load loss of atleast 300 MegaWatts. This dataset was used to perform for exploratory data analysis, assessment of missingness, and finally a permuatation test.
+The data in this website come from a dataset created by the Laboratory for Advancing Sustainable Critical Infrastructure at Purdue Univeristy (https://www.sciencedirect.com/science/article/pii/S2352340918307182). This dataset has a total of 1,534 rows, one for each power outage from Jan 2000 - July 2016 in the United States that impacted at least 50,000 customers or caused an unplanned firm load loss of atleast 300 MegaWatts. This dataset was used to perform for exploratory data analysis, assessment of missingness, and finally a permuatation test.
 
 ## Question
 
@@ -8,7 +8,23 @@ Does the Number of Power Outages per 100,000 people from States in the West and 
 
 ## Purpose
 
-The Real Gross State Product is a measurement of the financial well being of the residents in each state, and it is a good indicator of the strength of a given state's economy. So the answer to this question gives a lose connection to how well a state's infrastructure performs based on the states economic strength.
+It is important to understand the differences in the number of power outages between the East and West regions because it can help politicians and policymakers develop more rigorous strategies to prevent outages in the future. 
+
+## Important Columns
+
+Throughout this report there are a few relevant columns that are mentioned.
+
+- OUTAGE.START.DATE: The day on which the given power outage started
+- OUTAGE.START.TIME: The time at which the power outage started
+- OUTAGE.RESTORATION.DATE: The day on which the power outage was restored
+- OUTAGE.RESTORATION.TIME: The time at whch the power outage was restored
+- OUTAGE.DURATION: The time the power outage lasted. Originally in minutes but is changed to hours for easier interpretation.
+- PC.REALGSP.STATE: Per capita real gross state product (GSP) in the U.S. state (measured in 2009 chained U.S. dollars)
+- POSTAL.CODE: Represents the postal code of the U.S. states, two letter abbreviation
+- CLIMATE.REGION: U.S. Climate regions as specified by National Centers for Environmental Information (nine climatically consistent regions in continental U.S.A.)
+- POPPCT_UC: Percentage of the total population of the U.S. state represented by the population of the urban clusters (in %)
+- POPULATION: Population in the U.S. state in a year
+- ANOMALY.LEVEL: his represents the oceanic El Niño/La Niña (ONI) index referring to the cold and warm episodes by season. It is estimated as a 3-month running mean of ERSST.v4 SST anomalies in the Niño 3.4 region (5°N to 5°S, 120–170°W) 
 
 # Exploratory Data Analysis
 
@@ -18,11 +34,11 @@ How the power outage data was cleaned and explored to reach further depth on que
 
 ### 1.
 
-The data from Purdue University's website is in a .xlsx excel sheet. In order to read it in certain rows and columns from the excel sheet had to be dropped in order to turn it into a usable dataframe in pandas. From the
+The data from Purdue University's website is in a .xlsx excel sheet. In order to read it in certain rows and columns from the excel sheet had to be dropped in order to turn it into a usable dataframe in pandas.
 
 ### 2.
 
-Each power outage had an entry for the given outage's start day and start time separately, as well as the restoration start day and start time. These were both joined together to create a single column for the outage start, OUTAGE.START, and as column for the restoration date, OUTAGE.RESTORATION, which has the start time as a datetime object to the second of when the outage started, as well as when the restoration started respectively. 
+Each power outage had an entry for the given outage's start day and start time separately, as well as the restoration start day and start time. These were both joined together to create a single column for the outage start, OUTAGE.START, and a single column for the restoration date, OUTAGE.RESTORATION. These columns have the start time as a datetime object to the second of when the outage started, as well as when the restoration started, respectively. 
 
 ### 3.
 
@@ -387,14 +403,13 @@ The OUTAGE.DURATION column was divided by sixty in order to make it in minutes, 
 
 ### 4.
 
- AFter, two separate dataframes were created from this cleaned data that would be used throughout the rest of the research process. First is grouped_state, which has columns: 'MEAN.POP', 'MEAN.POP.URBAN', 'MEAN.GSP $', and 'OUTAGES.POP.NORM', 'W or E' and a row for each state that experienced a major power outage between the specified dates. 
+ From the outage dataframe, two separate dataframes were created from this cleaned data that would be used throughout the rest of the research process. First is grouped_state, which has columns: 'MEAN.POP', 'MEAN.POP.URBAN', 'MEAN.GSP $', and 'OUTAGES.POP.NORM', 'W or E'. Each row in grouped_state is a state. Grouped by POSTAL.CODE.
 
-- Mean.POP: The average population for each state over the instances of power outages
-- MEAN.POP.URBAN: Average percentage of the state's population that is urban over the instances of power outages
+- MEAN.POP: The average population for each state over the instances of power outages. Derived from POPULATION
+- MEAN.POP.URBAN: Average percentage of the state's population that is urban over the instances of power outages. Derived from POPPCT_UC.
 - MEAN.GSP $: Average value of a given state's GSP over the instances of power outages
-- OUTAGES.POP.NORM: The number of power per 100,000 people for the given dataset. 
-- W or E: Specifies if the state is in the West ('Southwest', 'West', 'Northwest', 'West North Central') or in the East ('Southeast','Northeast','East North Central')
-
+- OUTAGES.POP.NORM: The number of power outages per 100,000 people for the given dataset. 
+- W or E: Specifies if the state is in the West ('Southwest', 'West', 'Northwest', 'West North Central') or in the East ('Southeast','Northeast','East North Central'). Derived from CLIMATE.REGION
 
 
 The second dataframe was grouped_state_no_outliers, which was identical to grouped_state but without Delaware and Washington DC. These two states were taken out particularly because when visualized, they are clear outliers. Delaware was an outlier for the number of power outages that occurred, and Washington DC was an outlier for the GSP as shown in the plot below.
@@ -474,7 +489,7 @@ The head of grouped_state and grouped_state_no_outliers is below (they have the 
 
 ## Univariate Analysis
 
-The following plots show how the Gross State Product (GSP) is distributed for each large power outage. It can be seen that the large majority of power outages occurred in states with GSP of less than 100k, but there are power outages with GSP of over 150k. All of these power outages are in Washington DC, where the GSP is significantly higher than any state. Washington DC was excluded as an outlier in most future calculations. 
+The following plots show how the Gross State Product (GSP) and theoutage duration is distributed for each large power outage. It can be seen that the large majority of power outages occurred in states with GSP of less than 100k, but there are power outages with GSP of over 150k. All of these power outages are in Washington DC, where the GSP is significantly higher than any state. Washington DC was excluded as an outlier in most future calculations. 
 
 <iframe src="assets/Univarite_plot.html" width=620 height=600 frameBorder=0></iframe>
 
@@ -482,6 +497,8 @@ The following plots show how the Gross State Product (GSP) is distributed for ea
 
 This plot is a visualization of OUTAGES.POP.NORM, which is a column from grouped_state_no_outliers. It contains an observation for each state on how many power outages there were per 100,000 people. It should be noted that outliers (DE and DC) were removed to allow better visualization and analysis. 
 <iframe src="assets/Bivariate_plot.html" width=620 height=600 frameBorder=0></iframe>
+
+From this plot it can be seen that the states with an above average number of power outagese per 100,000 residents are often located near the coast, or in the south. This could be a result of the more extreme weather in these areas. 
 
 ## Interesting Aggregates
 
@@ -610,7 +627,7 @@ Specifically in this pivot table it can be seen that the East North Central Regi
 
 # Assessment of Missingness
 
-This section highlights the process and findings of the missingness of various columns, and the dependency of this missingness
+This section highlights the process and findings of the missingness of various columns, and the dependency of this missingness.
 
 ## NMAR Analysis
 
@@ -618,7 +635,7 @@ I believe that the missingness of the ANOMALY.LEVEL column is not missing at ran
 
 <iframe src="assets/missingness_plot.html" width=620 height=600 frameBorder=0></iframe>
 
-To determine if ANOMALY.LEVEL was dependent on either POPPCT_UC or CUSTOMERS.AFFECTED a permutation test was performed, by shuffling the ANOMALY.LEVEL column and finding the average of the other column with and without ANOMALY.LEVEL missing(POPPCT_UC or CUSTOMERS.AFFECTED). The test statistic that was used was a difference in group means. From the plot it can be seen that the ANOMALY.LEVEL column is MAR dependent on POPPCT_UC, but not on CUSTOMERS.AFFECTED. This was based on the p-value of 0.02 and 0.49 respectively, where the significant threshold of 5% was applied. 
+To determine if ANOMALY.LEVEL was dependent on either POPPCT_UC or CUSTOMERS.AFFECTED a permutation test was performed, by shuffling the ANOMALY.LEVEL column and finding the average of the other column with and without ANOMALY.LEVEL missing(POPPCT_UC or CUSTOMERS.AFFECTED). The test statistic that was used was a difference in group means. From the plot it can be seen that the ANOMALY.LEVEL column is MAR dependent on POPPCT_UC, but not on CUSTOMERS.AFFECTED. This was based on the p-value of 0.02 and 0.49 respectively, where the significance threshold of 0.05 was applied. 
 
 # Hypothesis Testing
 
@@ -628,11 +645,11 @@ Does the Number of Power Outages per 100,000 people from States in the West and 
 
 ## Permutation Test
 
-Null Hypothesis: The number of power outages per capita from states in the West and in the East come from the same distribution.
+Null Hypothesis: The number of power outages per capita from states in the West and in the East comes from the same distribution.
 
-Alternate Hypothesis: The number of power outages per capita from states in the West and in the East come from different distributions.
+Alternate Hypothesis: The number of power outages per capita from states in the West and in the East comes from different distributions.
 
-Significant Level: 0.05. Type I error is not consequential. 
+Significant Level: 0.05. Type I error is not consequential. Scientific standard level of significance. 
 
 Test Statistic: Difference of means of power outages per capita from the West and East. This is an effective statistic because it compares the central tendency of the two distributions, which is the main concern for the question.
 
