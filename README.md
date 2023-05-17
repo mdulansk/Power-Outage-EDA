@@ -4,7 +4,7 @@ The data in this website come from a dataset created by the Laboratory for Advan
 
 ## Question
 
-Does the Number of Power Outages Relate to the per Capita Real Gross State Product?
+Does the Number of Power Outages per Capita from States in the West and the East Come from the same Distribution?
 
 ## Purpose
 
@@ -387,14 +387,19 @@ The OUTAGE.DURATION column was divided by sixty in order to make it in minutes, 
 
 ### 4.
 
- AFter, two separate dataframes were created from this cleaned data that would be used throughout the rest of the research process. First is grouped_state, which has columns: 'MEAN.POP', 'MEAN.POP.URBAN', 'MEAN.GSP $', and 'OUTAGES.POP.NORM', and a row for each state that experienced a major power outage between the specified dates. 
+ AFter, two separate dataframes were created from this cleaned data that would be used throughout the rest of the research process. First is grouped_state, which has columns: 'MEAN.POP', 'MEAN.POP.URBAN', 'MEAN.GSP $', and 'OUTAGES.POP.NORM', 'W or E' and a row for each state that experienced a major power outage between the specified dates. 
 
 - Mean.POP: The average population for each state over the instances of power outages
 - MEAN.POP.URBAN: Average percentage of the state's population that is urban over the instances of power outages
 - MEAN.GSP $: Average value of a given state's GSP over the instances of power outages
 - OUTAGES.POP.NORM: The number of power per 100,000 people for the given dataset. 
+- W or E: Specifies if the state is in the West ('Southwest', 'West', 'Northwest', 'West North Central') or in the East ('Southeast','Northeast','East North Central')
 
-The second dataframe was grouped_state_no_outliers, which was identical to grouped_state but without Delaware and Washington DC. These two states were taken out particularly because when visualized, they are clear outliers. Delaware was an outlier for the number of power outages that occurred, and Washington DC was an outlier for the GSP. 
+
+
+The second dataframe was grouped_state_no_outliers, which was identical to grouped_state but without Delaware and Washington DC. These two states were taken out particularly because when visualized, they are clear outliers. Delaware was an outlier for the number of power outages that occurred, and Washington DC was an outlier for the GSP as shown in the plot below.
+
+<iframe src="assets/outliers_plot.html" width=620 height=600 frameBorder=0></iframe>
 
 The head of grouped_state and grouped_state_no_outliers is below (they have the same head):
 
@@ -606,7 +611,7 @@ This section highlights the process and findings of the missingness of various c
 
 I believe that the missingness of the ANOMALY.LEVEL column is not missing at random (NMAR). The missingness may depend on the number of customers affected by the given power outage (CUSTOMERS.AFFECTED), or the percentage of the total population of the U.S. state represented by the population of the urban clusters (POPPCT_UC). The following plots help to explain the missingness of ANOMALY.LEVEL.
 
-<iframe src="assets/Missingness_plot.html" width=620 height=600 frameBorder=0></iframe>
+<iframe src="assets/missingness_plot.html" width=620 height=600 frameBorder=0></iframe>
 
 To determine if ANOMALY.LEVEL was dependent on either POPPCT_UC or CUSTOMERS.AFFECTED a permutation test was performed, by shuffling the ANOMALY.LEVEL column and finding the average of the other column with and without ANOMALY.LEVEL missing(POPPCT_UC or CUSTOMERS.AFFECTED). The test statistic that was used was a difference in group means. From the plot it can be seen that the ANOMALY.LEVEL column is MAR dependent on POPPCT_UC, but not on CUSTOMERS.AFFECTED. This was based on the p-value of 0.02 and 0.49 respectively, where the significant threshold of 5% was applied. 
 
@@ -614,8 +619,20 @@ To determine if ANOMALY.LEVEL was dependent on either POPPCT_UC or CUSTOMERS.AFF
 
 ## Question
 
-Does the Number of Power Outages per Capita relate to the per Capita Real Gross State Product?
+Does the Number of Power Outages per Capita from States in the West and the East Come from the same Distribution?
 
 ## Permutation Test
 
-The 
+Null Hypothesis: The number of power outages per capita from states in the West and in the East come from the same distribution.
+
+Alternate Hypothesis: The number of power outages per capita from states in the West and in the East come from different distributions.
+
+Significant Level: 0.05. Type I error is not consequential. 
+
+Test Statistic: Difference of means of power outages per capita from the West and East. This is an effective statistic because it compares the central tendency of the two distributions, which is the main concern for the question.
+
+P-value: 0.41
+
+Conclusion: Fail to Reject the null hypothesis that power outages per capita from states in the west and in the east come from the same distribution. 
+
+<iframe src="assets/perm_plot.html" width=620 height=600 frameBorder=0></iframe>
