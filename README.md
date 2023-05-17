@@ -597,3 +597,25 @@ The following pivot table is used to compare the average power outage duration i
 </div>
 
 Specifically in this pivot table it can be seen that the East North Central Region had by far the longest periods without power compared to the other regions. This is mainly from power outages caused by equipment failure and fuel supply emergencies. These same causes played much less of a role in the length of power outages for most other regions. It can be seen that the southwest region had the longest average power outage duration for sever weather storms. This could likely be due to fires and wind destroying power plants. 
+
+# Assessment of Missingness
+
+This section highlights the process and findings of the missingness of various columns, and the dependency of this missingness
+
+## NMAR Analysis
+
+I believe that the missingness of the ANOMALY.LEVEL column is not missing at random (NMAR). The missingness may depend on the number of customers affected by the given power outage (CUSTOMERS.AFFECTED), or the percentage of the total population of the U.S. state represented by the population of the urban clusters (POPPCT_UC). The following plots help to explain the missingness of ANOMALY.LEVEL.
+
+<iframe src="assets/Missingness_plot.html" width=620 height=600 frameBorder=0></iframe>
+
+To determine if ANOMALY.LEVEL was dependent on either POPPCT_UC or CUSTOMERS.AFFECTED a permutation test was performed, by shuffling the ANOMALY.LEVEL column and finding the average of the other column with and without ANOMALY.LEVEL missing(POPPCT_UC or CUSTOMERS.AFFECTED). The test statistic that was used was a difference in group means. From the plot it can be seen that the ANOMALY.LEVEL column is MAR dependent on POPPCT_UC, but not on CUSTOMERS.AFFECTED. This was based on the p-value of 0.02 and 0.49 respectively, where the significant threshold of 5% was applied. 
+
+# Hypothesis Testing
+
+## Question
+
+Does the Number of Power Outages per Capita relate to the per Capita Real Gross State Product?
+
+## Permutation Test
+
+The 
