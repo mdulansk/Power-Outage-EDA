@@ -4,7 +4,7 @@ The data in this website come from a dataset created by the Laboratory for Advan
 
 ## Question
 
-Does the Number of Power Outages per Capita from States in the West and the East Come from the same Distribution?
+Does the Number of Power Outages per 100,000 people from States in the West and the East Come from the same Distribution?
 
 ## Purpose
 
@@ -464,7 +464,6 @@ The head of grouped_state and grouped_state_no_outliers is below (they have the 
             </tr>
         </tbody>
     </table>
-
 </div>
 
 ## Univariate Analysis
@@ -619,7 +618,7 @@ To determine if ANOMALY.LEVEL was dependent on either POPPCT_UC or CUSTOMERS.AFF
 
 ## Question
 
-Does the Number of Power Outages per Capita from States in the West and the East Come from the same Distribution?
+Does the Number of Power Outages per 100,000 people from States in the West and the East Come from the same Distribution?
 
 ## Permutation Test
 
