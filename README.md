@@ -636,8 +636,8 @@ Significant Level: 0.05. Type I error is not consequential.
 
 Test Statistic: Difference of means of power outages per capita from the West and East. This is an effective statistic because it compares the central tendency of the two distributions, which is the main concern for the question.
 
+<iframe src="assets/perm_plot.html" width=620 height=600 frameBorder=0></iframe>
+
 P-value: 0.41
 
 Conclusion: Fail to Reject the null hypothesis that power outages per capita from states in the west and in the east come from the same distribution. 
-
-<iframe src="assets/perm_plot.html" width=620 height=600 frameBorder=0></iframe>
