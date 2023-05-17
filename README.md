@@ -414,6 +414,8 @@ The head of grouped_state and grouped_state_no_outliers is below (they have the 
             <th>MEAN.POP.URBAN</th>
             <th>OUTAGES.POP.NORM</th>
             <th>MEAN.GSP $</th>
+            <th>CLIMATE.REGION</th>
+            <th>W or E</th>
             </tr>
         </thead>
         <tbody>
@@ -425,6 +427,8 @@ The head of grouped_state and grouped_state_no_outliers is below (they have the 
             <td>21.56</td>
             <td>0.159245</td>
             <td>57401.000000</td>
+            <td>NaN</td>
+            <td>None</td>
             </tr>
             <tr>
             <th>1</th>
@@ -434,6 +438,8 @@ The head of grouped_state and grouped_state_no_outliers is below (they have the 
             <td>10.39</td>
             <td>0.129067</td>
             <td>35446.833333</td>
+            <td>Southeast</td>
+            <td>East</td>
             </tr>
             <tr>
             <th>2</th>
@@ -443,6 +449,8 @@ The head of grouped_state and grouped_state_no_outliers is below (they have the 
             <td>16.62</td>
             <td>0.854799</td>
             <td>35929.280000</td>
+            <td>South</td>
+            <td>None</td>
             </tr>
             <tr>
             <th>3</th>
@@ -452,6 +460,8 @@ The head of grouped_state and grouped_state_no_outliers is below (they have the 
             <td>9.74</td>
             <td>0.442950</td>
             <td>38952.964286</td>
+            <td>Southwest</td>
+            <td>West</td>
             </tr>
             <tr>
             <th>4</th>
@@ -461,6 +471,8 @@ The head of grouped_state and grouped_state_no_outliers is below (they have the 
             <td>5.22</td>
             <td>0.565352</td>
             <td>53212.323810</td>
+            <td>West</td>
+            <td>West</td>
             </tr>
         </tbody>
     </table>
