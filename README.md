@@ -45,9 +45,20 @@ The OUTAGE.DURATION column was divided by sixty in order to make it in minutes, 
 - MEAN.GSP $: Average value of a given state's GSP over the instances of power outages
 - OUTAGES.POP.NORM: The number of power per 100,000 people for the given dataset. 
 
-The second dataframe was grouped_state_no_outliers, which was identical to grouped_state but without Delaware and Washington DC. These two states were taken out particularly because when visualized, they are clear outliers. Delaware was an outlier for the number of power outages that occurred, and Washington DC was an outlier for 
+The second dataframe was grouped_state_no_outliers, which was identical to grouped_state but without Delaware and Washington DC. These two states were taken out particularly because when visualized, they are clear outliers. Delaware was an outlier for the number of power outages that occurred, and Washington DC was an outlier for the GSP. 
 
+The head of grouped_state and grouped_state_no_outliers is below (they have the same head):
+
+|    | POSTAL.CODE   |   NUMBER.OUTAGES |         MEAN.POP |   MEAN.POP.URBAN |   OUTAGES.POP.NORM |   MEAN.GSP $ |
+|---:|:--------------|-----------------:|-----------------:|-----------------:|-------------------:|-------------:|
+|  0 | AK            |                1 | 627963           |            21.56 |           0.159245 |      57401   |
+|  1 | AL            |                6 |      4.64874e+06 |            10.39 |           0.129067 |      35446.8 |
+|  2 | AR            |               25 |      2.92466e+06 |            16.62 |           0.854799 |      35929.3 |
+|  3 | AZ            |               28 |      6.32125e+06 |             9.74 |           0.44295  |      38953   |
+|  4 | CA            |              210 |      3.7145e+07  |             5.22 |           0.565352 |      53212.3 |
 
 ## Univariate Analysis
 
 The following plots show how the Gross State Product (GSP) is distributed for each large power outage. It can be seen that the large majority of power outages occurred in states with GSP of less than 100k, but there are power outages with GSP of over 150k. All of these power outages are in Washington DC, where the GSP is significantly higher than any state. Washington DC was excluded as an outlier in most future calculations. 
+
+<iframe src="assets/Univarite_plot.html" width=800 height=600 frameBorder=0></iframe>
