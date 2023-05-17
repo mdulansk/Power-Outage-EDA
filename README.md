@@ -28,7 +28,6 @@ Each power outage had an entry for the given outage's start day and start time s
 
 The OUTAGE.DURATION column was divided by sixty in order to make it in minutes, which is a more understandable unit for the duration of power outages. After this was completed the outage dataframe was fully cleaned.
 
-CHANGE
 <div style ="width: 480 px; overflow-x: auto;">
     <table class="dataframe">
         <thead>
@@ -400,13 +399,67 @@ The second dataframe was grouped_state_no_outliers, which was identical to group
 The head of grouped_state and grouped_state_no_outliers is below (they have the same head):
 
 <div style ="width: 480 px; overflow-x: auto;">
-    |    | POSTAL.CODE   |   NUMBER.OUTAGES |         MEAN.POP |   MEAN.POP.URBAN |   OUTAGES.POP.NORM |   MEAN.GSP $ |
-    |---:|:--------------|-----------------:|-----------------:|-----------------:|-------------------:|-------------:|
-    |  0 | AK            |                1 | 627963           |            21.56 |           0.159245 |      57401   |
-    |  1 | AL            |                6 |      4.64874e+06 |            10.39 |           0.129067 |      35446.8 |
-    |  2 | AR            |               25 |      2.92466e+06 |            16.62 |           0.854799 |      35929.3 |
-    |  3 | AZ            |               28 |      6.32125e+06 |             9.74 |           0.44295  |      38953   |
-    |  4 | CA            |              210 |      3.7145e+07  |             5.22 |           0.565352 |      53212.3 |
+    <table class="dataframe">
+        <thead>
+            <tr style="text-align: right;">
+            <th></th>
+            <th>POSTAL.CODE</th>
+            <th>NUMBER.OUTAGES</th>
+            <th>MEAN.POP</th>
+            <th>MEAN.POP.URBAN</th>
+            <th>OUTAGES.POP.NORM</th>
+            <th>MEAN.GSP $</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <th>0</th>
+            <td>AK</td>
+            <td>1</td>
+            <td>6.279630e+05</td>
+            <td>21.56</td>
+            <td>0.159245</td>
+            <td>57401.000000</td>
+            </tr>
+            <tr>
+            <th>1</th>
+            <td>AL</td>
+            <td>6</td>
+            <td>4.648740e+06</td>
+            <td>10.39</td>
+            <td>0.129067</td>
+            <td>35446.833333</td>
+            </tr>
+            <tr>
+            <th>2</th>
+            <td>AR</td>
+            <td>25</td>
+            <td>2.924665e+06</td>
+            <td>16.62</td>
+            <td>0.854799</td>
+            <td>35929.280000</td>
+            </tr>
+            <tr>
+            <th>3</th>
+            <td>AZ</td>
+            <td>28</td>
+            <td>6.321252e+06</td>
+            <td>9.74</td>
+            <td>0.442950</td>
+            <td>38952.964286</td>
+            </tr>
+            <tr>
+            <th>4</th>
+            <td>CA</td>
+            <td>210</td>
+            <td>3.714503e+07</td>
+            <td>5.22</td>
+            <td>0.565352</td>
+            <td>53212.323810</td>
+            </tr>
+        </tbody>
+    </table>
+
 </div>
 
 ## Univariate Analysis
