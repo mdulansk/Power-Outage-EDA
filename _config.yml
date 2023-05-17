@@ -2,4 +2,4 @@ remote_theme: pages-themes/time-machine@v0.2.0
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
 title: [Power Outage Per Capita Findings]
-description: Publishing brief findings from a United States Power Outage Dataset
+description: Publishing Brief Findings From a United States Power Outage Dataset

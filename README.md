@@ -1,1 +1,1 @@
-Does the Number of Power Outages Relate to the per Capita Real Gross State Product?
+# H1 Cleaning and Exploratory Data Analysis
