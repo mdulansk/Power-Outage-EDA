@@ -489,6 +489,7 @@ The head of grouped_state and grouped_state_no_outliers is below (they have the 
     </table>
 </div>
 
+
 ## Univariate Analysis
 
 The following plots show how the Gross State Product (GSP) and theoutage duration is distributed for each large power outage. It can be seen that the large majority of power outages occurred in states with GSP of less than 100k, but there are power outages with GSP of over 150k. All of these power outages are in Washington DC, where the GSP is significantly higher than any state. Washington DC was excluded as an outlier in most future calculations. 
@@ -497,6 +498,7 @@ The following plots show how the Gross State Product (GSP) and theoutage duratio
     <iframe src="assets/Univarite_plot.html" width=1000 height=600 frameBorder=0></iframe>
 </div>
 
+
 ## Bivariate Analysis
 
 This plot is a visualization of OUTAGES.POP.NORM, which is a column from grouped_state_no_outliers. It contains an observation for each state on how many power outages there were per 100,000 people. It should be noted that outliers (DE and DC) were removed to allow better visualization and analysis. 
@@ -504,12 +506,11 @@ This plot is a visualization of OUTAGES.POP.NORM, which is a column from grouped
 <div style="display: flex; justify-content: center;">
     <iframe src="assets/Bivariate_plot.html" width=1000 height=600 frameBorder=0></iframe>
 </div>
-
-From this plot it can be seen that the states with an above average number of power outagese per 100,000 residents are often located near the coast, or in the south. This could be a result of the more extreme weather in these areas. 
+From this plot it can be seen that the states with an above average number of power outagese per 100,000 residents are often located near the coast, or in the south. This could be a result of the more extreme weather in these areas. Though, none of these inferences are conclusive.
 
 ## Interesting Aggregates
 
-The following pivot table is used to compare the average power outage duration in each region of the US with the cause of the given power outage. This can be used to infer how well resources are able to recover the power grid, or how severly the power grid was damaged by a given storm. It was created by finding the mean value of power outage durate for each region by each power outage cause. 
+The following pivot table is used to compare the average power outage duration in each region of the US with the cause of the given power outage. This can be used to infer how well regional support sources are able to recover the power grid, or how severly the power grid was damaged by a given storm. It was created by finding the mean value of power outage durate for each region by each power outage cause. 
 
 <div style ="width: 480 px; overflow-x: auto;">
     <table class="dataframe">
@@ -630,7 +631,7 @@ The following pivot table is used to compare the average power outage duration i
     </table>
 </div>
 
-Specifically in this pivot table it can be seen that the East North Central Region had by far the longest periods without power compared to the other regions. This is mainly from power outages caused by equipment failure and fuel supply emergencies. These same causes played much less of a role in the length of power outages for most other regions. It can be seen that the southwest region had the longest average power outage duration for sever weather storms. This could likely be due to fires and wind destroying power plants. 
+Specifically in this pivot table it can be seen that the East North Central Region had by far the longest periods without power compared to the other regions. This is mainly from power outages caused by equipment failure and fuel supply emergencies. These same causes played much less of a role in the length of power outages for most other regions. It can be seen that the southwest region had the longest average power outage duration for sever weather storms. This could likely be due to fires and wind destroying power plants, though it is not conclusive.
 
 # Assessment of Missingness
 
@@ -662,10 +663,14 @@ Significant Level: 0.05. Type I error is not consequential. Scientific standard 
 
 Test Statistic: Difference of means of power outages per capita from the West and East. This is an effective statistic because it compares the central tendency of the two distributions, which is the main concern for the question.
 
+Relevant Columns: This test was performed with the grouped_state_no_outliers data set, focusing on the 'OUTAGES.POP.NORM' and 'W or E' columns.
+
+Process: The OUTAGES.POP.NORM column was shuffled 10,000 times and each shuffle the difference of means between the East and West groups was calculated to form the test statistic distribution.
+
 <div style="display: flex; justify-content: center;">
     <iframe src="assets/perm_plot.html" width=1000 height=600 frameBorder=0></iframe>
 </div>
 
 P-value: 0.41
 
-Conclusion: Fail to Reject the null hypothesis that power outages per capita from states in the west and in the east come from the same distribution. 
+Conclusion: Fail to Reject the null hypothesis that power outages per 100,000 people from states in the West and in the East come from the same distribution.
