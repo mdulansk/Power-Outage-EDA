@@ -648,7 +648,7 @@ I believe that the missingness of the ANOMALY.LEVEL column is not missing at ran
 To determine if ANOMALY.LEVEL was dependent on either POPPCT_UC or CUSTOMERS.AFFECTED a permutation test was performed, by shuffling the ANOMALY.LEVEL column and finding the average of the other column with and without ANOMALY.LEVEL missing (POPPCT_UC or CUSTOMERS.AFFECTED). The test statistic that was used was a difference in group means. From the plot it can be seen that the ANOMALY.LEVEL column is MAR dependent on POPPCT_UC, but not on CUSTOMERS.AFFECTED. This was based on the p-value of 0.02 and 0.49 respectively, where the significance threshold of 0.05 was applied. 
 
 - ANOMALY.LEVEL MAR dependent on POPPCT_UC (P-value: 0.02)
-- ANOMALY.LEVEL NMAR dependent on CUSTOMERS.AFFECTED (P-value: 0.5)
+- ANOMALY.LEVEL not dependent on CUSTOMERS.AFFECTED (P-value: 0.5)
 
 # Hypothesis Testing
 
