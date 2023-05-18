@@ -492,7 +492,7 @@ The head of grouped_state and grouped_state_no_outliers is below (they have the 
 
 ## Univariate Analysis
 
-The following plots show how the Gross State Product (GSP) and theoutage duration is distributed for each large power outage. It can be seen that the large majority of power outages occurred in states with GSP of less than 100k, but there are power outages with GSP of over 150k. All of these power outages are in Washington DC, where the GSP is significantly higher than any state. Washington DC was excluded as an outlier in most future calculations. 
+The following plots show how the Gross State Product (GSP) and theoutage duration is distributed for each large power outage. It can be seen that the large majority of power outages occurred in states with GSP of less than 100k, but there are power outages with GSP of over 150k. All of these power outages are in Washington DC, where the GSP is significantly higher than any state. Washington DC was excluded as an outlier in most future calculations. Additionally, the vast majority of power outages lasted a relatively short amount of time, but there are some that lasted weeks.
 
 <div style="display: flex; justify-content: center;">
     <iframe src="assets/Univarite_plot.html" width=1000 height=600 frameBorder=0></iframe>
@@ -645,7 +645,10 @@ I believe that the missingness of the ANOMALY.LEVEL column is not missing at ran
     <iframe src="assets/missingness_plot.html" width=1000 height=500 frameBorder=0></iframe>
 </div>
 
-To determine if ANOMALY.LEVEL was dependent on either POPPCT_UC or CUSTOMERS.AFFECTED a permutation test was performed, by shuffling the ANOMALY.LEVEL column and finding the average of the other column with and without ANOMALY.LEVEL missing(POPPCT_UC or CUSTOMERS.AFFECTED). The test statistic that was used was a difference in group means. From the plot it can be seen that the ANOMALY.LEVEL column is MAR dependent on POPPCT_UC, but not on CUSTOMERS.AFFECTED. This was based on the p-value of 0.02 and 0.49 respectively, where the significance threshold of 0.05 was applied. 
+To determine if ANOMALY.LEVEL was dependent on either POPPCT_UC or CUSTOMERS.AFFECTED a permutation test was performed, by shuffling the ANOMALY.LEVEL column and finding the average of the other column with and without ANOMALY.LEVEL missing (POPPCT_UC or CUSTOMERS.AFFECTED). The test statistic that was used was a difference in group means. From the plot it can be seen that the ANOMALY.LEVEL column is MAR dependent on POPPCT_UC, but not on CUSTOMERS.AFFECTED. This was based on the p-value of 0.02 and 0.49 respectively, where the significance threshold of 0.05 was applied. 
+
+- ANOMALY.LEVEL MAR dependent on POPPCT_UC (P-value: 0.02)
+- ANOMALY.LEVEL NMAR dependent on CUSTOMERS.AFFECTED (P-value: 0.5)
 
 # Hypothesis Testing
 
