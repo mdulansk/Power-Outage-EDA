@@ -414,7 +414,9 @@ The OUTAGE.DURATION column was divided by sixty in order to make it in minutes, 
 
 The second dataframe was grouped_state_no_outliers, which was identical to grouped_state but without Delaware and Washington DC. These two states were taken out particularly because when visualized, they are clear outliers. Delaware was an outlier for the number of power outages that occurred, and Washington DC was an outlier for the GSP as shown in the plot below.
 
-<iframe src="assets/outliers_plot.html" width=800 height=400 frameBorder=0></iframe>
+<div style="display: flex; justify-content: center;">
+    <iframe src="assets/outliers_plot.html" width=800 height=400 frameBorder=0></iframe>
+</div>
 
 The head of grouped_state and grouped_state_no_outliers is below (they have the same head):
 
@@ -491,12 +493,17 @@ The head of grouped_state and grouped_state_no_outliers is below (they have the 
 
 The following plots show how the Gross State Product (GSP) and theoutage duration is distributed for each large power outage. It can be seen that the large majority of power outages occurred in states with GSP of less than 100k, but there are power outages with GSP of over 150k. All of these power outages are in Washington DC, where the GSP is significantly higher than any state. Washington DC was excluded as an outlier in most future calculations. 
 
-<iframe src="assets/Univarite_plot.html" width=800 height=600 frameBorder=0></iframe>
+<div style="display: flex; justify-content: center;">
+    <iframe src="assets/Univarite_plot.html" width=800 height=600 frameBorder=0></iframe>
+</div>
 
 ## Bivariate Analysis
 
 This plot is a visualization of OUTAGES.POP.NORM, which is a column from grouped_state_no_outliers. It contains an observation for each state on how many power outages there were per 100,000 people. It should be noted that outliers (DE and DC) were removed to allow better visualization and analysis. 
-<iframe src="assets/Bivariate_plot.html" width=800 height=600 frameBorder=0></iframe>
+
+<div style="display: flex; justify-content: center;">
+    <iframe src="assets/Bivariate_plot.html" width=800 height=600 frameBorder=0></iframe>
+</div>
 
 From this plot it can be seen that the states with an above average number of power outagese per 100,000 residents are often located near the coast, or in the south. This could be a result of the more extreme weather in these areas. 
 
@@ -632,8 +639,9 @@ This section highlights the process and findings of the missingness of various c
 ## NMAR Analysis
 
 I believe that the missingness of the ANOMALY.LEVEL column is not missing at random (NMAR). The missingness may depend on the number of customers affected by the given power outage (CUSTOMERS.AFFECTED), or the percentage of the total population of the U.S. state represented by the population of the urban clusters (POPPCT_UC). The following plots help to explain the missingness of ANOMALY.LEVEL.
+
 <div style="display: flex; justify-content: center;">
-    <iframe src="assets/missingness_plot.html" width=620 height=600 frameBorder=0></iframe>
+    <iframe src="assets/missingness_plot.html" width=800 height=800 frameBorder=0></iframe>
 </div>
 
 To determine if ANOMALY.LEVEL was dependent on either POPPCT_UC or CUSTOMERS.AFFECTED a permutation test was performed, by shuffling the ANOMALY.LEVEL column and finding the average of the other column with and without ANOMALY.LEVEL missing(POPPCT_UC or CUSTOMERS.AFFECTED). The test statistic that was used was a difference in group means. From the plot it can be seen that the ANOMALY.LEVEL column is MAR dependent on POPPCT_UC, but not on CUSTOMERS.AFFECTED. This was based on the p-value of 0.02 and 0.49 respectively, where the significance threshold of 0.05 was applied. 
@@ -654,7 +662,9 @@ Significant Level: 0.05. Type I error is not consequential. Scientific standard 
 
 Test Statistic: Difference of means of power outages per capita from the West and East. This is an effective statistic because it compares the central tendency of the two distributions, which is the main concern for the question.
 
-<iframe src="assets/perm_plot.html" width=800 height=600 frameBorder=0></iframe>
+<div style="display: flex; justify-content: center;">
+    <iframe src="assets/perm_plot.html" width=800 height=600 frameBorder=0></iframe>
+</div>
 
 P-value: 0.41
 
