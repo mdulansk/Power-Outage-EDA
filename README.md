@@ -641,7 +641,7 @@ This section highlights the process and findings of the missingness of various c
 I believe that the missingness of the ANOMALY.LEVEL column is not missing at random (NMAR). The missingness may depend on the number of customers affected by the given power outage (CUSTOMERS.AFFECTED), or the percentage of the total population of the U.S. state represented by the population of the urban clusters (POPPCT_UC). The following plots help to explain the missingness of ANOMALY.LEVEL.
 
 <div style="display: flex; justify-content: center;">
-    <iframe src="assets/missingness_plot.html" width=1000 height=800 frameBorder=0></iframe>
+    <iframe src="assets/missingness_plot.html" width=1000 height=500 frameBorder=0></iframe>
 </div>
 
 To determine if ANOMALY.LEVEL was dependent on either POPPCT_UC or CUSTOMERS.AFFECTED a permutation test was performed, by shuffling the ANOMALY.LEVEL column and finding the average of the other column with and without ANOMALY.LEVEL missing(POPPCT_UC or CUSTOMERS.AFFECTED). The test statistic that was used was a difference in group means. From the plot it can be seen that the ANOMALY.LEVEL column is MAR dependent on POPPCT_UC, but not on CUSTOMERS.AFFECTED. This was based on the p-value of 0.02 and 0.49 respectively, where the significance threshold of 0.05 was applied. 
